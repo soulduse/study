@@ -29,6 +29,8 @@ subprojects {
 
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        testImplementation("org.assertj:assertj-core:3.18.1")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
         ktlint("com.pinterest:ktlint:$ktlintVersion")
     }
 
