@@ -16,7 +16,7 @@ class HelloApiTest {
 
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(response.headers.contentType.toString()).startsWith("text/plain;")
-        assertThat(response.body).isEqualTo("Hello, Dave")
+        assertThat(response.body).isEqualTo("* Hello, Dave *")
     }
 
     @Test
