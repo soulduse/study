@@ -1,6 +1,5 @@
 package com.example.inflearnspring
 
-import org.springframework.context.ApplicationContext
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -11,15 +10,11 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class HelloController(
     private val helloService: HelloService,
-    private val applicationContext: ApplicationContext,
 ) {
-
-    init {
-        println("applicationContext = $applicationContext")
-    }
 
     @GetMapping("/hello")
     fun hello(name: String): String {
+        require(name.isNotBlank())
         return helloService.hello(name)
     }
 }
