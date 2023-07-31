@@ -1,11 +1,11 @@
 package com.example.inflearnspring
 
-import org.springframework.boot.SpringApplication
+import com.example.config.MySpringBootApplication
+import org.springframework.boot.runApplication
 
-@MySpringBootAnnotation
+@MySpringBootApplication
 class InflearnSpringApplication
 
 fun main(args: Array<String>) {
-    SpringApplication.run(InflearnSpringApplication::class.java, *args)
-//    runApplication<InflearnSpringApplication>(*args)
+    runApplication<InflearnSpringApplication>(*args)
 }
