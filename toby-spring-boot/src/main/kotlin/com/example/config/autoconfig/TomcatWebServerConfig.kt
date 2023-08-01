@@ -11,17 +11,14 @@ import org.springframework.core.env.Environment
 
 @MyAutoConfiguration
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
-class TomcatWebServerConfig(
-    @Value("\${contextPath}")
-    private val contextPathEnv: String,
-) {
+class TomcatWebServerConfig {
 
     @Bean("tomcatWebServerFactory")
     @ConditionalOnMissingBean // 사용자가 등록한게 있다면 사용하고 없을 때 사용하도록 결정하는 어노테이션
-    fun servletWebServerFactory(): ServletWebServerFactory {
-        println("contextPath => $contextPathEnv")
+    fun servletWebServerFactory(properties: ServerProperties): ServletWebServerFactory {
         val factory = TomcatServletWebServerFactory().apply {
-            this.contextPath = contextPathEnv
+            this.contextPath = properties.contextPath
+            this.port = properties.port
         }
         return factory
     }

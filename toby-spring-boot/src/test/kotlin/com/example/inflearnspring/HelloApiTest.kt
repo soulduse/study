@@ -12,7 +12,7 @@ class HelloApiTest {
         // http localhost:8080/hello?name=Dave
         // HTTPie
         val rest = TestRestTemplate()
-        val response = rest.getForEntity("http://localhost:8080/app/hello?name={name}", String::class.java, "Dave")
+        val response = rest.getForEntity("http://localhost:9090/app/hello?name={name}", String::class.java, "Dave")
 
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(response.headers.contentType.toString()).startsWith("text/plain;")
@@ -22,7 +22,7 @@ class HelloApiTest {
     @Test
     fun failsHelloApi() {
         val rest = TestRestTemplate()
-        val response = rest.getForEntity("http://localhost:8080/app/hello?name", String::class.java)
+        val response = rest.getForEntity("http://localhost:9090/app/hello?name", String::class.java)
 
         assertThat(response.statusCode).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR)
     }
