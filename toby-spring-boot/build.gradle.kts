@@ -19,7 +19,9 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-web") {
+        exclude(group = "org.springframework.boot", module = "spring-boot-starter-tomcat")
+    }
     implementation("org.springframework.boot:spring-boot-starter-jetty")
     runtimeOnly("com.h2database:h2:2.1.214")
 
