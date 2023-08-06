@@ -14,10 +14,23 @@ annotation class FastUnitTest
 class HelloServiceTest {
     @FastUnitTest
     fun simpleHelloService() {
-        val helloService = SimpleHelloService()
+        val helloService = SimpleHelloService(memberRepository = getMemberRepositoryStub())
         val ret = helloService.hello("Dave")
 
         assertThat(ret).isEqualTo("Hello, Dave")
+    }
+
+    private fun getMemberRepositoryStub() = object : MemberRepository {
+        override fun findMember(name: String): Member {
+            return Member(1, name, 0)
+        }
+
+        override fun increaseAge(name: String) {
+        }
+
+        override fun ageOf(name: String): Int {
+            return 0
+        }
     }
 
     @UnitTest

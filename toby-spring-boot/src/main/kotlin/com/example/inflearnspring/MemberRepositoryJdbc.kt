@@ -3,7 +3,6 @@ package com.example.inflearnspring
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
-import java.util.UUID
 
 @Repository
 class MemberRepositoryJdbc(
@@ -39,5 +38,4 @@ class MemberRepositoryJdbc(
             member.name,
         )
     }
-
 }

@@ -17,4 +17,9 @@ class HelloController(
         require(name.isNotBlank())
         return helloService.hello(name)
     }
+
+    @GetMapping("/age")
+    fun age(name: String): String {
+        return "$name : ${helloService.ageOf(name)}"
+    }
 }

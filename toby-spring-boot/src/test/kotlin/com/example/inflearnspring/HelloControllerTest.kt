@@ -12,6 +12,10 @@ class HelloControllerTest {
             override fun hello(name: String): String {
                 return "Hello, $name"
             }
+
+            override fun ageOf(name: String): Int {
+                return "Hello, $name".length
+            }
         })
         val name = "Dave"
         val ret = controller.hello(name)
@@ -23,6 +27,10 @@ class HelloControllerTest {
         val controller = HelloController(object : HelloService {
             override fun hello(name: String): String {
                 return "Hello, $name"
+            }
+
+            override fun ageOf(name: String): Int {
+                return "Hello, $name".length
             }
         })
         val name = ""

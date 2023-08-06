@@ -12,4 +12,8 @@ class HelloDecorator(
     override fun hello(name: String): String {
         return "* ${helloService.hello(name)} *"
     }
+
+    override fun ageOf(name: String): Int {
+        return helloService.ageOf(name)
+    }
 }
