@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 
 @HellobootTest
-class JdbcTemplateTest {
+class MemberRepositoryTest {
+    @Autowired
+    lateinit var memberRepository: MemberRepository
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 
@@ -23,11 +25,17 @@ class JdbcTemplateTest {
     }
 
     @Test
-    fun insertAndQuery() {
-        jdbcTemplate.update("INSERT INTO MEMBER VALUES (?, ?, ?)", 1, "keesun", 20)
-        jdbcTemplate.update("INSERT INTO MEMBER VALUES (?, ?, ?)", 2, "Kim", 30)
+    fun findMemberFailed() {
+        val member = memberRepository.findMember("keesun")
+        assertThat(member).isNull()
+    }
 
-        val count: Long? = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM MEMBER", Long::class.java)
-        assertThat(count).isEqualTo(2)
+    @Test
+    fun increaseAge() {
+        assertThat(memberRepository.ageOf("keesun")).isEqualTo(0)
+        memberRepository.increaseAge("keesun")
+        assertThat(memberRepository.ageOf("keesun")).isEqualTo(1)
+        memberRepository.increaseAge("keesun")
+        assertThat(memberRepository.ageOf("keesun")).isEqualTo(2)
     }
 }
