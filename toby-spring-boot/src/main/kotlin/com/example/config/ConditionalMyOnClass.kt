@@ -7,7 +7,7 @@ import org.springframework.core.type.AnnotatedTypeMetadata
 import org.springframework.util.ClassUtils
 
 @Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.CLASS)
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 @Conditional(MyOnClassCondition::class)
 annotation class ConditionalMyOnClass(val value: String)
 
