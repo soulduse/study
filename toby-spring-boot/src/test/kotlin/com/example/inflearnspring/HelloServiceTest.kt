@@ -39,6 +39,10 @@ class HelloServiceTest {
             override fun hello(name: String): String {
                 return "Hello, $name"
             }
+
+            override fun ageOf(name: String): Int {
+                return "Hello, $name".length
+            }
         })
         val ret = helloDecorator.hello("Dave")
 
